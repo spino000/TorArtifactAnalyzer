@@ -1,3 +1,5 @@
+from utils import read_file_content
+
 import csv
 
 def analyze_disk(disk_csv_path):

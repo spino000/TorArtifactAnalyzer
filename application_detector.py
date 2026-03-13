@@ -1,3 +1,4 @@
+from utils import read_file_content
 def analyze_application(app_artifacts_path):
     results = {
         "tor_profile_found": False,

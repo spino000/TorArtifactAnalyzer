@@ -1,3 +1,4 @@
+from utils import read_file_content
 def analyze_network(network_summary_path):
     results = {
         "tls_detected": False,
