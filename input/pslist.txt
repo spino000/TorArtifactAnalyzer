@@ -1,0 +1,5 @@
+Offset(V)          Name                    PID   PPID
+0x12345678         System                  4     0
+0x23456789         explorer.exe            1520  1480
+0x34567890         firefox.exe             4020  1520
+0x45678901         tor.exe                 4100  4020

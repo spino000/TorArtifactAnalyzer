@@ -1,0 +1,40 @@
+===== Tor Activity Detection Report =====
+
+---- Memory Evidence ----
+[+] tor.exe found in memory process list
+[+] firefox.exe found in memory process list
+[+] possible Tor-related connection found in netscan
+
+---- Disk Evidence ----
+[+] Tor prefetch found: C:\Windows\Prefetch\TOR.EXE.pf
+[+] Firefox prefetch found: C:\Windows\Prefetch\FIREFOX.EXE.pf
+[+] Tor Browser folder found: C:\Users\User\Desktop\Tor Browser
+[+] Suspicious archive found: C:\Users\User\Documents\confidential.zip
+
+---- Network Evidence ----
+[+] TLS/encrypted traffic detected
+[+] external IP communication detected
+[+] persistent network connection detected
+[+] Tor-like port usage detected
+
+---- Application Evidence ----
+[+] Tor browser profile found: C:\Users\User\Desktop\Tor Browser\Browser\TorBrowser\Data\Browser\profile.default\places.sqlite
+[+] places.sqlite found: C:\Users\User\Desktop\Tor Browser\Browser\TorBrowser\Data\Browser\profile.default\places.sqlite
+[+] Tor browser profile found: C:\Users\User\Desktop\Tor Browser\Browser\TorBrowser\Data\Browser\profile.default\cookies.sqlite
+[+] cookies.sqlite found: C:\Users\User\Desktop\Tor Browser\Browser\TorBrowser\Data\Browser\profile.default\cookies.sqlite
+[+] Tor browser profile found: C:\Users\User\Desktop\Tor Browser\Browser\TorBrowser\Data\Browser\profile.default
+
+---- Correlation Summary ----
+[+] Tor process detected in memory
+[+] Tor-related connections detected in memory
+[+] Tor execution evidence found in prefetch
+[+] Tor Browser installation/folder found
+[+] Suspicious archive prepared for possible exfiltration
+[+] Encrypted network traffic detected
+[+] Persistent external communication observed
+[+] Tor-like network port usage detected
+[+] Tor Browser profile found
+[+] Tor browser application artifacts detected
+
+Correlation Score: 15
+Conclusion: High confidence of Tor usage with possible insider data exfiltration activity
