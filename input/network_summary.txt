@@ -1,4 +1,0 @@
-TLS traffic detected
-Persistent external TCP connection found
-Connection to public IP 185.220.101.1
-Encrypted session over port 9001

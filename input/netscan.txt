@@ -1,3 +1,0 @@
-Offset(P)          Proto   LocalAddr        ForeignAddr      State       PID
-0x11111111         TCPv4   192.168.1.10:49712  185.220.101.1:9001  ESTABLISHED  4100
-0x22222222         TCPv4   192.168.1.10:49713  93.184.216.34:443   ESTABLISHED  4020

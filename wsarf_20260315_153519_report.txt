@@ -1,5 +1,9 @@
 ===== Tor Activity Detection Report =====
 
+Case Name: wsarf
+Investigator: awef
+Generated On: 2026-03-15 15:35:19
+
 MEMORY ANALYSIS
 
 DISK ARTIFACT ANALYSIS

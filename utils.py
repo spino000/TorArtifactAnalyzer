@@ -11,12 +11,12 @@ def read_file_content(file_path):
                 return f.read().lower()
 
         elif ext == ".csv":
-            data = []
+            rows = []
             with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
                 reader = csv.reader(f)
                 for row in reader:
-                    data.append(" ".join(row).lower())
-            return "\n".join(data)
+                    rows.append(" ".join(row).lower())
+            return "\n".join(rows)
 
         elif ext == ".json":
             with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
@@ -25,5 +25,6 @@ def read_file_content(file_path):
 
         else:
             return ""
+
     except Exception:
         return ""

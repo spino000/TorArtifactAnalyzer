@@ -1,60 +1,75 @@
 def correlate_evidence(memory_results, disk_results, network_results, application_results):
-    score = 0
-    findings = []
 
-    # Memory
+    findings = []
+    score = 0
+
+    # Memory indicators
     if memory_results["tor_process_detected"]:
-        score += 2
         findings.append("Tor process detected in memory")
+        score += 2
+
+    if memory_results["firefox_detected"]:
+        findings.append("Firefox process detected (Tor Browser uses Firefox)")
+        score += 1
 
     if memory_results["tor_related_connections"]:
+        findings.append("Tor-related network connections observed in memory")
         score += 2
-        findings.append("Tor-related connections detected in memory")
 
-    # Disk
+    # Disk indicators
     if disk_results["tor_prefetch_found"]:
+        findings.append("Tor execution evidence found in Prefetch")
         score += 2
-        findings.append("Tor execution evidence found in prefetch")
+
+    if disk_results["firefox_prefetch_found"]:
+        findings.append("Firefox Prefetch artifact found")
+        score += 1
 
     if disk_results["tor_folder_found"]:
-        score += 1
-        findings.append("Tor Browser installation/folder found")
+        findings.append("Tor Browser directory artifacts detected")
+        score += 2
 
     if disk_results["suspicious_archive_found"]:
-        score += 2
-        findings.append("Suspicious archive prepared for possible exfiltration")
-
-    # Network
-    if network_results["tls_detected"]:
+        findings.append("Suspicious archive file detected (possible data staging)")
         score += 1
-        findings.append("Encrypted network traffic detected")
+
+    # Network indicators
+    if network_results["tls_detected"]:
+        findings.append("Encrypted TLS traffic observed")
+        score += 1
+
+    if network_results["external_ip_detected"]:
+        findings.append("External IP communication detected")
+        score += 1
 
     if network_results["persistent_connection_detected"]:
+        findings.append("Persistent TCP connection observed")
         score += 1
-        findings.append("Persistent external communication observed")
 
     if network_results["tor_like_port_detected"]:
+        findings.append("Connection to Tor-like ports detected")
         score += 2
-        findings.append("Tor-like network port usage detected")
 
-    # Application
+    # Application artifacts
     if application_results["tor_profile_found"]:
-        score += 1
-        findings.append("Tor Browser profile found")
+        findings.append("Tor browser profile directory found")
+        score += 2
 
-    if application_results["places_sqlite_found"] or application_results["cookies_sqlite_found"]:
+    if application_results["places_sqlite_found"]:
+        findings.append("Browser history database detected (places.sqlite)")
         score += 1
-        findings.append("Tor browser application artifacts detected")
 
-    # Final conclusion
-    if score >= 10:
+    if application_results["cookies_sqlite_found"]:
+        findings.append("Browser cookie database detected (cookies.sqlite)")
+        score += 1
+
+    # Determine conclusion
+    if score >= 8:
         conclusion = "High confidence of Tor usage with possible insider data exfiltration activity"
-    elif score >= 6:
-        conclusion = "Moderate confidence of Tor-related activity"
-    elif score >= 3:
-        conclusion = "Low confidence Tor-related indicators present"
+    elif score >= 4:
+        conclusion = "Moderate evidence of Tor activity detected"
     else:
-        conclusion = "No significant Tor-related evidence detected"
+        conclusion = "Low evidence of Tor activity"
 
     return {
         "correlation_score": score,
